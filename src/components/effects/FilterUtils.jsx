@@ -1,11 +1,13 @@
-export function applyY2kFilter(img, canvas, effects) {
+import React from "react";
+
+export default function applyY2kFilter(img, canvas, effects) {
     const ctx = canvas.getContext("2d");
     
     canvas.width = img.width;
     canvas.height = img.height;
-    
+
+
     ctx.drawImage(img, 0, 0);
-    
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
     
@@ -22,7 +24,7 @@ export function applyY2kFilter(img, canvas, effects) {
     }
     
     if (effects.blurAmount > 0) {
-      addSoftness(ctx, canvas.width, canvas.height, effects.blurAmount);
+      addSoftness(ctx, effects.blurAmount, canvas);
     }
     
     return canvas.toDataURL("image/jpeg");
@@ -30,21 +32,18 @@ export function applyY2kFilter(img, canvas, effects) {
   
   function applyColorAdjustments(data, effects) {
     const cyanFactor = effects.cyanIntensity / 100 * 1.5;
-    const contrastFactor = 0.7 + (effects.contrast / 100) * 0.6; // 0.7-1.3
-    const contrastOffset = 30 - (effects.contrast / 100) * 20; // More offset = less contrast
+    const contrastFactor = 0.7 + (effects.contrast / 100) * 0.6;
+    const contrastOffset = 30 - (effects.contrast / 100) * 20; 
     const greenTintFactor = effects.greenTint / 100;
     
     for (let i = 0; i < data.length; i += 4) {
-      // Desaturate based on contrast setting
       const avgColor = (data[i] + data[i + 1] + data[i + 2]) / 3;
-      const desatFactor = 1 - (effects.contrast / 200); // Less contrast = more desaturated
+      const desatFactor = 1 - (effects.contrast / 200); 
       
-      // Apply color adjustments
       data[i] = data[i] * (1 - desatFactor * 0.3) + avgColor * desatFactor * 0.3;                 
       data[i + 1] = data[i + 1] * (1 - desatFactor * 0.2 + greenTintFactor * 0.3) + avgColor * desatFactor * 0.2;  
       data[i + 2] = data[i + 2] * (1 + cyanFactor * 0.5) + avgColor * desatFactor * 0.1;         
       
-      // Apply contrast adjustment
       data[i] = (data[i] - 128) * contrastFactor + 128 + contrastOffset;
       data[i + 1] = (data[i + 1] - 128) * contrastFactor + 128 + contrastOffset;
       data[i + 2] = (data[i + 2] - 128) * contrastFactor + 128 + contrastOffset + (cyanFactor * 20);
@@ -56,7 +55,7 @@ export function applyY2kFilter(img, canvas, effects) {
     const data = imageData.data;
     
 
-    const noiseIntensity = amount / 5; // Scale 0-100 to 0-20
+    const noiseIntensity = amount / 5;
     for (let i = 0; i < data.length; i += 4) {
       const noise = Math.random() * noiseIntensity - (noiseIntensity / 2);
       data[i] += noise;
@@ -73,7 +72,7 @@ export function applyY2kFilter(img, canvas, effects) {
     const verticalGap = Math.floor(200 - density * 1.5);
     
 
-    const lineOpacity = opacity / 100 * 0.2; // Scale 0-100 to 0-0.2
+    const lineOpacity = opacity / 100 * 0.2;
     ctx.globalAlpha = lineOpacity;
     ctx.strokeStyle = "#00ffff";
     ctx.lineWidth = 1;
@@ -96,14 +95,16 @@ export function applyY2kFilter(img, canvas, effects) {
     ctx.globalAlpha = 1.0;
   }
   
-  function addSoftness(ctx, width, height, amount) {
+  function addSoftness(ctx, amount, canvas) {
   
     const blurAmount = (amount / 100) * 3;
+
     
     // Apply a very mild blur effect by overlaying a transparent version
     ctx.globalAlpha = Math.min(0.8, amount / 100);
-    ctx.filter = `blur(${blurAmount}px)`;
-    ctx.drawImage(canvas, 0, 0);
+//ctx.filter = `blur(${blurAmount}px)`;
     ctx.filter = "none";
+    ctx.drawImage(canvas, 0, 0);
     ctx.globalAlpha = 1.0;
   }
+

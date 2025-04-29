@@ -1,12 +1,10 @@
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
-import Controls from "../components/contols/Controls"
-
-import { useState, useRef, useEffect } from "react";
 import ImageUploader from "../components/canvas/ImageUploader";
-import ControlsPanel from "../components/controls/ControlsPanel";
+import Controls from "./contols/Controls"
+
 import ImagePreview from "../components/canvas/ImagePreview";
-import { applyY2kFilter } from "../components/effects/y2kFilter";
+import applyY2kFilter  from "./effects/FilterUtils";
 
 // Main component that orchestrates the app
 export default function CyanFilter() {
@@ -89,7 +87,7 @@ export default function CyanFilter() {
           
           {/* Controls Panel */}
           {originalImage && (
-            <ControlsPanel 
+            <Controls 
               effects={effects} 
               onEffectChange={handleEffectChange}
               onReset={resetEffects}
@@ -104,7 +102,7 @@ export default function CyanFilter() {
           ) : filteredImage && (
             <ImagePreview 
               image={filteredImage} 
-              title="Y2K Filtered" 
+              title="GWACH Y2K Filtered" 
               showDownload={true}
             />
           )}
