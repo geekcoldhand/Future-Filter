@@ -1,3 +1,220 @@
 .App {
   text-align: center;
 }
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Main container */
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem; /* p-8 */
+  background-color: #1a202c; /* bg-gray-900 */
+  min-height: 100vh;
+  color: #9cffee; /* text-cyan-300 */
+}
+
+.filter-content {
+  width: 100%;
+  max-width: 56rem; /* w-full max-w-4xl */
+}
+
+.filter-title {
+  font-size: 2.25rem; /* text-4xl */
+  margin-bottom: 2rem; /* mb-8 */
+  text-align: center;
+  font-weight: 700; /* font-bold */
+  letter-spacing: 0.05em; /* tracking-wider */
+  color: #34ebd8; /* text-cyan-400 */
+}
+
+/* Image Upload Component Styles */
+/* These will be applied to your ImageUploader component */
+.image-uploader {
+  margin-bottom: 1.5rem; /* mb-6 */
+  background-color: #2d3748; /* bg-gray-800 */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #2c7a7b; /* border-cyan-700 */
+}
+
+.uploader-label {
+  display: block;
+  margin-bottom: 1rem; /* mb-4 */
+  font-size: 1.125rem; /* text-lg */
+}
+
+.file-input {
+  margin-top: 0.5rem; /* mt-2 */
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  background-color: #4a5568; /* bg-gray-700 */
+  color: #a0f0ed; /* text-cyan-200 */
+  border-radius: 0.25rem; /* rounded */
+  border: 1px solid #319795; /* border-cyan-600 */
+}
+
+.file-input:focus {
+  border-color: #38b2ac; /* border-cyan-400 */
+  outline: none;
+}
+
+/* Filter grid layout */
+.filter-grid {
+  display: grid;
+  gap: 1.5rem; /* gap-6 */
+}
+
+@media (min-width: 768px) {
+  .filter-grid {
+    grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+  }
+}
+
+/* Image Preview Component Styles */
+/* These will be applied to your ImagePreview component */
+.image-preview {
+  background-color: #2d3748; /* bg-gray-800 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #2c7a7b; /* border-cyan-700 */
+}
+
+.preview-title {
+  font-size: 1.25rem; /* text-xl */
+  margin-bottom: 0.75rem; /* mb-3 */
+  text-align: center;
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 24rem; /* max-h-96 */
+}
+
+/* Download button container */
+.download-container {
+  margin-top: 1rem; /* mt-4 */
+  display: flex;
+  justify-content: center;
+}
+
+.download-button {
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  background-color: #2c7a7b; /* bg-cyan-700 */
+  color: white;
+  border-radius: 0.25rem; /* rounded */
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #319795; /* hover:bg-cyan-600 */
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  color: #34ebd8; /* text-cyan-400 */
+}
+
+/* Controls Component Styles */
+/* These will be applied to your Controls component */
+.controls {
+  background-color: #2d3748; /* bg-gray-800 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #2c7a7b; /* border-cyan-700 */
+}
+
+.controls-title {
+  font-size: 1.25rem; /* text-xl */
+  margin-bottom: 0.75rem; /* mb-3 */
+  text-align: center;
+}
+
+.controls-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* gap-3 */
+}
+
+.controls-reset {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #e53e3e; /* bg-red-600 */
+  color: white;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.controls-reset:hover {
+  background-color: #c53030; /* hover:bg-red-700 */
+}
+
+/* Slider component styles */
+.slider-container {
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem; /* mb-1 */
+}
+
+.slider-label {
+  font-size: 0.875rem; /* text-sm */
+  color: #9cffee; /* text-cyan-300 */
+}
+
+.slider-value {
+  font-size: 0.875rem; /* text-sm */
+  color: #a0f0ed; /* text-cyan-200 */
+}
+
+.slider-input {
+  width: 100%; /* w-full */
+  height: 0.5rem; /* h-2 */
+  background-color: #4a5568; /* bg-gray-700 */
+  border-radius: 0.5rem; /* rounded-lg */
+  appearance: none;
+  cursor: pointer;
+}
+
+/* For webkit browsers (Chrome, Safari, etc.) */
+.slider-input::-webkit-slider-thumb {
+  appearance: none;
+  background-color: #0694a2; /* accent-cyan-500 */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+/* For Firefox */
+.slider-input::-moz-range-thumb {
+  border: none;
+  background-color: #0694a2; /* accent-cyan-500 */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}

@@ -66,51 +66,49 @@ export default function CyanFilter() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 bg-gray-900 min-h-screen text-cyan-300">
-      <div className="w-full max-w-5xl">
-        <h1 className="text-3xl md:text-4xl mb-6 text-center font-bold tracking-wider text-cyan-400">
-          Y2K FUTURE FILTER
-        </h1>
-        
-        {/* Image Upload Component */}
-        <ImageUploader onImageUpload={handleImageUpload} />
-        
-        {/* Main content area with original, controls, and filtered */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Original Image */}
-          {originalImage && (
-            <ImagePreview 
-              image={originalImage} 
-              title="Original" 
-            />
-          )}
-          
-          {/* Controls Panel */}
-          {originalImage && (
-            <Controls 
-              effects={effects} 
-              onEffectChange={handleEffectChange}
-              onReset={resetEffects}
-            />
-          )}
-          
-          {/* Filtered Image */}
-          {loading ? (
-            <div className="flex justify-center items-center bg-gray-800 p-4 rounded-lg border border-cyan-700">
-              <div className="text-cyan-400">Processing...</div>
-            </div>
-          ) : filteredImage && (
-            <ImagePreview 
-              image={filteredImage} 
-              title="GWACH Y2K Filtered" 
-              showDownload={true}
-            />
-          )}
-        </div>
-      </div>
+    <div className="filter-container">
+    <div className="filter-content">
+      <h1 className="filter-title">2000's Cyan Filter</h1>
       
-      {/* Hidden canvas for processing */}
-      <canvas ref={canvasRef} style={{ display: "none" }} />
+      {/* Image Upload Component */}
+      <ImageUploader onImageUpload={handleImageUpload} />
+      
+      {/* Main content area with original, controls, and filtered */}
+      <div className="filter-grid">
+        {/* Original Image */}
+        {originalImage && (
+          <ImagePreview 
+            image={originalImage} 
+            title="Original" 
+          />
+        )}
+        
+        {/* Controls Panel */}
+        {originalImage && (
+          <Controls 
+            effects={effects} 
+            onEffectChange={handleEffectChange}
+            onReset={resetEffects}
+          />
+        )}
+        
+        {/* Filtered Image */}
+        {loading ? (
+          <div className="loading-container">
+            <div className="loading-text">Processing...</div>
+          </div>
+        ) : filteredImage && (
+          <ImagePreview 
+            image={filteredImage} 
+            title="Y2K Filtered" 
+            showDownload={true}
+          />
+        )}
+      </div>
     </div>
+    
+    {/* Hidden canvas for processing */}
+    <canvas ref={canvasRef} style={{ display: "none" }} />
+  </div>
   );
 }

@@ -11,15 +11,14 @@ export default function ImageUploader({ onImageUpload }) {
     };
   
     return (
-      <div className="mb-6 bg-gray-800 p-4 md:p-6 rounded-lg border border-cyan-700">
-        <label className="block mb-2 text-lg">
+      <div className="image-uploader">
+      <label className="uploader-label">
           Upload Image:
           <input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="mt-2 block w-full px-3 py-2 bg-gray-700 text-cyan-200 rounded border border-cyan-600 focus:border-cyan-400"
-          />
+            className="file-input"          />
         </label>
       </div>
     );
