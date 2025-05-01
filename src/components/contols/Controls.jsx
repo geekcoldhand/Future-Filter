@@ -1,6 +1,6 @@
 import React from "react";
 import EffectGroup from "../effects/EffectGroup";
-import EffectSlider from "../effects/EffectGroup";
+import EffectSlider from "../effects/EffectSlider";
 
 export default function Controls({ effects, onEffectChange, onReset }) {
 	return (

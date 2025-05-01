@@ -204,7 +204,7 @@ body {
 /* For webkit browsers (Chrome, Safari, etc.) */
 .slider-input::-webkit-slider-thumb {
   appearance: none;
-  background-color: #0694a2; /* accent-cyan-500 */
+  background-color: #434849; /* accent-cyan-500 */
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -217,4 +217,31 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 50%;
+}
+.collapsible-section {
+  margin-bottom: 0.75rem; /* mb-3 */
+  border-bottom: 1px solid #4a5568; /* border-b border-gray-700 */
+  padding-bottom: 0.5rem; /* pb-2 */
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.collapsible-title {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #34ebd8; /* text-cyan-400 */
+}
+
+.collapsible-toggle {
+  font-size: 0.75rem; /* text-xs */
+}
+
+.collapsible-content {
+  padding-left: 0.5rem; /* pl-2 */
 }
